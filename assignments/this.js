@@ -4,7 +4,7 @@
 * 1. this keyword is a function and it provides contexts whenever we use our functions and has access to our window object
 * 2. without this, you won't be able to have access to the object. For example, if you want name or color inside the object, using this would show the name and color. Without it, nothing would appear. (Implicit Binding)
 * 3. Using a constructor function will push this inside the object that is being generated and will bind on it.
-* 4.
+* 4. whenever you use .call or apply, it must be explictly defined
 *
 * write out a code example of each explanation above
 */
@@ -38,10 +38,12 @@ function Evil(name, height, power) {
   }
 }
 
-const evilMan = new Evil('Vegeta', '5\'5', '9000')
+const evilMan = new Evil('Vegeta', '5\'5', '8000')
 evilMan.speak()
 // Principle 4
 
 // code example for Explicit Binding
-sonGoku.speak.apply(evilMan, skills)
-sonGoku.speak.call(evilMan, skills)
+function Person(value) {
+  Evil.call(this, value)
+}
+console.log(new Evil('Cell').name);
